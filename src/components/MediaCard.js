@@ -4,14 +4,15 @@ import Box from "@mui/material/Box";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-export function MediaCard({data}) {
+export function MediaCard(props) {
+    const {data} = props
     return (
         <Card sx={{width: 350, display: 'flex', height: 128, justifyContent: "left", alignItems: "center"}}>
             <CardMedia
                 component="img"
                 height={80}
                 sx={{width: 80}}
-                image={data.image_url}
+                image={data.icon_url}
                 alt="green iguana"
             />
             <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: "space-between"}}>

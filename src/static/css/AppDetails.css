@@ -1,0 +1,47 @@
+.app-details-div{
+    margin-left: 184px;
+    margin-right: 182px;
+}
+.div-content{
+    margin-left: 184px;
+    margin-right: 182px;
+    text-align: left;
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 27px;
+    color: #7788A3;
+    display: block;
+;
+}
+.app-details-top{
+    text-align: left;
+}
+.left-arrow-div{
+    margin-top: 26px;
+    margin-bottom: 26px;
+}
+.main-icon{
+
+}
+.app-details-icon-div{
+    display: flex;
+    flex-direction: row;
+}
+.app-details-name-div{
+    width: 200px;
+    margin-left: 30px;
+}
+.rating-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.tags-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 26px;
+}
+.owl-player-div{
+    margin-top: 40px;
+}
