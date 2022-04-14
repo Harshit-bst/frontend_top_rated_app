@@ -70,7 +70,7 @@ function TopApps() {
         <div>
             <header className="App-header">
                 <div className={"div-bluestacks"}>
-                    <img src={bluestacksLogo} alt={"Bluestacks Logo"}/>
+                    <img src={bluestacksLogo} alt={"Bluestacks Logo"} className={"bluestacks-logo"}/>
                     <span className={"reload"} onClick={() => handleRefresh()}>↻</span>
                 </div>
                 <h1>Top Charts</h1>

@@ -20,7 +20,7 @@ export default function AppDetails(){
     return (
         <div>
             <div className={"div-bluestacks"}>
-                <img src={bluestacksLogo} alt={"Bluestacks Logo"}/>
+                <a href={"/"}><img src={bluestacksLogo} alt={"Bluestacks Logo"} className={"bluestacks-logo"}/></a>
             </div>
             <div dangerouslySetInnerHTML={{ __html: apiData }}></div>
         </div>
