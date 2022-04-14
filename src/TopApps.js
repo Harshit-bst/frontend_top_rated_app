@@ -1,27 +1,26 @@
 import './TopApps.css';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {useEffect, useState} from "react";
 import axiosInstance from "./axios";
-
+import bluestacksLogo from "./assets/img.png"
+import refresh from "./assets/img_1.png"
 function MediaCard({data}) {
     return (
-        <Card sx={{ maxWidth: 345, display: 'flex' }}>
+        <Card sx={{ width: 350, display: 'flex', height: 128, justifyContent:"left", alignItems:"center" }}>
             <CardMedia
                 component="img"
-                height="80"
+                height={80}
+                sx={{width: 80}}
                 image={data.image_url}
                 alt="green iguana"
             />
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: "space-between" }}>
+                <CardContent sx={{justifyContent: "space-between"}}>
+                    <Typography gutterBottom variant="body1" component="div">
                         {data.name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -29,34 +28,28 @@ function MediaCard({data}) {
                     </Typography>
                 </CardContent>
             </Box>
+            <Box className={"right-arrow-div"}>
+                <i className="right arrow"></i>
+            </Box>
         </Card>
     );
 }
 
 function CardView({data}) {
     return (
-        <div>{
-            data.map((dataItem, i) => {
-            return (
-                i<3? <Box
-                    sx={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        '& > :not(style)': {
-                            m: 1,
-                            width: 350,
-                            height: 128,
-                        },
-                    }}>
-                    <Paper elevation={2} >
-                        <MediaCard data={dataItem}/>
-                    </Paper>
-                </Box> : null
-            );
-        })
+        <div className={"card-view-playstore"}>{
+            data.map((dataItem, i) => {return (i<3? <a href={`/appdetails/${dataItem.pkg}`}><MediaCard data={dataItem}/></a> : null);})
         }
         </div>
     );
+}
+
+function handleRefresh() {
+    axiosInstance('/save-new-apps').then(
+        (response) => {
+            alert('New Apps synced from playstore, refreshing the page');
+        }
+    )
 }
 
 function TopApps() {
@@ -76,32 +69,38 @@ function TopApps() {
     return (
         <div>
             <header className="App-header">
+                <div className={"div-bluestacks"}>
+                    <img src={bluestacksLogo} alt={"Bluestacks Logo"}/>
+                    <span className={"reload"} onClick={() => handleRefresh()}>↻</span>
+                </div>
                 <h1>Top Charts</h1>
             </header>
-            <div className={"top-free-apps"}>
-                <h2>Top Free Apps</h2>
-                <CardView data={apiData.top_free_apps}/>
+            <div className={"apps-div"}>
+                <div className={"top-free-apps"}>
+                    <h2>Top Free Apps</h2>
+                    <CardView data={apiData.top_free_apps}/>
+                </div>
+                <div className={"top-free-apps"}>
+                    <h2>Top Grossing Apps</h2>
+                    <CardView data={apiData?.top_grossing_apps}/>
+                </div>
+                <div className={"top-free-apps"}>
+                    <h2>Top Paid Apps</h2>
+                    <CardView data={apiData?.top_paid_apps}/>
+                </div>
+                <div className={"top-free-apps"}>
+                    <h2>Top Free Games</h2>
+                    <CardView data={apiData?.top_free_games}/>
+                </div>
+                <div className={"top-free-apps"}>
+                    <h2>Top Grossing Games</h2>
+                    <CardView data={apiData?.top_grossing_games}/>
+                </div>
+                <div className={"top-free-apps"}>
+                    <h2>Top Paid Games</h2>
+                    <CardView data={apiData?.top_paid_games}/>
+                </div>
             </div>
-            {/*<div className={"top-free-apps"}>*/}
-            {/*    <h2>Top Grossing Apps</h2>*/}
-            {/*    <CardView data={apiData?.top_grossing_apps}/>*/}
-            {/*</div>*/}
-            {/*<div className={"top-free-apps"}>*/}
-            {/*    <h2>Top Paid Apps</h2>*/}
-            {/*    <CardView data={apiData?.top_paid_apps}/>*/}
-            {/*</div>*/}
-            {/*<div className={"top-free-apps"}>*/}
-            {/*    <h2>Top Free Games</h2>*/}
-            {/*    <CardView data={apiData?.top_free_games}/>*/}
-            {/*</div>*/}
-            {/*<div className={"top-free-apps"}>*/}
-            {/*    <h2>Top Grossing Games</h2>*/}
-            {/*    <CardView data={apiData?.top_grossing_games}/>*/}
-            {/*</div>*/}
-            {/*<div className={"top-free-apps"}>*/}
-            {/*    <h2>Top Paid Games</h2>*/}
-            {/*    <CardView data={apiData?.top_paid_games}/>*/}
-            {/*</div>*/}
         </div>
     );
 }

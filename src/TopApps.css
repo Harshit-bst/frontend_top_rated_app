@@ -1,3 +1,44 @@
-.top-free-apps{
+.apps-div{
+    margin-left: 165px;
+    margin-right: 165px;
+}
+.top-free-apps > h2{
+    text-align: left;
+}
+.card-view-playstore{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
 
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.MuiCardContent-root {
+    padding: 0px;
+    margin: 0px;
+}
+.div-bluestacks{
+    background: #1F2640;
+    justify-content: space-between;
+    padding-left: 165px;
+    padding-right: 165px;
+    display: flex;
+}
+.reload {
+    font-family: Lucida Sans Unicode;
+    color: white;
+    font-size: 24px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
 }
