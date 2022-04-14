@@ -1,6 +1,6 @@
-import TopApps from "./TopApps";
+import TopApps from "./pages/TopApps";
 import {Route, Routes} from "react-router-dom";
-import AppDetails from "./AppDetails";
+import AppDetails from "./pages/AppDetails";
 
 export default function AppRoutes(props){
     return (
