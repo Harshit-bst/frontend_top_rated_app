@@ -4,6 +4,7 @@ import axiosInstance from "../api/axios";
 import bluestacksLogo from "../assets/img.png"
 import {MediaCard} from "../components/MediaCard";
 import * as PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 function TopAppsHeader(props) {
     return <header className="App-header">
@@ -20,7 +21,7 @@ TopAppsHeader.propTypes = {onClick: PropTypes.func};
 function CardView({data}) {
     return (
         <div className={"card-view-playstore"}>{
-            data.map((dataItem, i) => {return (i<3? <a href={`/appdetails/${dataItem.pkg}`}><MediaCard data={dataItem}/></a> : null);})
+            data.map((dataItem, i) => {return (i<3? <Link to={`/frontend_top_rated_app/appdetails/${dataItem.pkg}`}><MediaCard data={dataItem}/></Link> : null);})
         }
         </div>
     );
